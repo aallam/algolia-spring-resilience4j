@@ -1,0 +1,18 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      multiIndexSearch:
+        registerHealthIndicator: true
+        failure-rate-threshold: 5
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
+        minimum-number-of-calls: 10
+        automatic-transition-from-open-to-half-open-enabled: true
+        permitted-number-of-calls-in-half-open-state: 4
+        wait-duration-in-open-state: 1s
+
+  timelimiter:
+    instances:
+      multiIndexSearch:
+        timeoutDuration: 2s
+        cancelRunningFuture: true
